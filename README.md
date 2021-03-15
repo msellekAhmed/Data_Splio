@@ -50,30 +50,22 @@ Puis, lancez la construction de l'application via:
 #### Etape n°3: lancer l'application ####
 Une fois la construction terminée, rendez-vous dans le dossier `target` du module `lawn-mower-core`:
 
-	cd lawnmower-core/target/
+	cd data-cli/target/
 
 Vous pouvez y trouver le JAR `lawn-mower-cli-1.0-SNAPSHOT-jar-with-dependencies.jar`que vous pouvez lancer avec la commande suivante:
 
-	java -jar lawnmower-core-1.0-jar-with-dependencies.jar <chemin vers le fichier de specification des mower>
+	java -jar data-cli-1.0.0-jar-with-dependencies.jar <chemin vers le fichier de specification des mower>
 
 ---
 ## Guide d'utilisation ##
 L'usage de l'application est le suivant:
 
-	Usage: lawn-mower-cli <file>
+	Usage: data-cli <file>
 
   		<file>
         	source file path
 
 Un seul argument est attendu en entrée; ce dernier doit être un fichier existant. Cet usage vous est affiché pour rappel en cas d'erreur. Le libellé `lawn-mower-core`est bien évidemment à remplacer par le nom du JAR.
-### Fichiers de test
-Quelques exemples vous sont fournis pour vous familiariser avec l'application:
-
-Fichier | Cas d'usage
---------|------------
-[singleMower](https://github.com/msellekAhmed/Lawn_Mower/blob/master/lawnmower-core/src/main/resources/singleMower)|Une tondeuse seule.
-[singleMowerAtLawnBounds](https://github.com/msellekAhmed/Lawn_Mower/blob/master/lawnmower-core/src/main/resources/singleMowerAtLawnBounds)|Une tondeuse seule qui tente de franchir les limites de la pelouse.
-[multipleMowersWithoutCrash](https://github.com/msellekAhmed/Lawn_Mower/blob/master/lawnmower-core/src/main/resources/multipleMowersWithoutCrash)|Plusieurs tondeuses qui n'entrent pas en collision.
 
 ---
 ## Notes techniques ##
@@ -88,9 +80,7 @@ L'application est découpée en modules selon la correspondance suivante:
 
 Module            | Description
 ------------------|------
-lawnmower-core    | contient l'interface de ligne de commande et la main class permettant de faire usage de l'application.
-lawnmower-model   | contient le model et la logique "pure" de l'application; fonctionnement des pelouses et des tondeuses.
-lawnmower-utils   | contient la logique de *parsing* des fichiers sources.
+data-core         | la logique "pure" de l'application; Calcul des differentes moyennes.
+data-parsing      | contient la logique de *parsing* des fichiers sources et le model et 
+data-cli          | contient l'interface de ligne de commande et la main class permettant de faire usage de l'application.
 
-
-Il est important de noter que les modules `lawnmower-model`et `lawnmower-utils` n'ont pas de dépendance entre eux. C'est le module `lawnmower-core`qui fait le lien.
